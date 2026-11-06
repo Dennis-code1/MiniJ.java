@@ -79,7 +79,7 @@ public class MiniJ extends JPanel {
     final double total;
 
     MiniJ() {
-        setBackground(Color.WHITE);
+        setBackground(Color.CYAN);// background color of the window changed to cyan
         double t = 0;
         for (int i = 1; i < P.length; i++)
             t += Math.hypot(P[i][0] - P[i - 1][0], P[i][1] - P[i - 1][1]);
