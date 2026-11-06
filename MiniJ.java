@@ -4,11 +4,11 @@ import java.awt.event.ActionEvent;
 
 public class MiniJ extends JPanel {
         // ===================== CHOOSE THE STARTING POINT =====================
-    static final boolean START_FROM_BOTTOM = false;   // true = begin at the hook, false = begin at the top bar
+    static final boolean START_FROM_BOTTOM = true;   // true = begin at the hook, false = begin at the top bar
 
     // ===================== PATH A: FROM THE TOP (original, index 0 to 21) =====================
     static final double[][] FROM_TOP = {
-        {190.0, 100.0, 1},   //  0  START: left end of top bar
+        {190.0, 100.0, 0},   //  0  START: left end of top bar
         {380.0, 100.0, 1},   //  1  right end of top bar // only Horizontal line, no vertical line
         {285.0, 100.0, 0},   //  2  pen-up jump to middle of bar// vertical line, no horizontal line
         {285.0, 400.0, 1},   //  3  bottom of stem
@@ -34,28 +34,11 @@ public class MiniJ extends JPanel {
 
     // ===================== PATH B: FROM THE BOTTOM (reversed, index 0 to 21) =====================
     static final double[][] FROM_BOTTOM = {
-        {145.0, 400.0, 1},   //  0  START: tip of the hook
-        {146.1, 412.2, 1},   //  1  170 deg
-        {149.2, 423.9, 1},   //  2  160 deg
-        {154.4, 435.0, 1},   //  3  150 deg
-        {161.4, 445.0, 1},   //  4  140 deg
-        {170.0, 453.6, 1},   //  5  130 deg
-        {180.0, 460.6, 1},   //  6  120 deg
-        {191.1, 465.8, 1},   //  7  110 deg
-        {202.8, 468.9, 1},   //  8  100 deg
-        {215.0, 470.0, 1},   //  9  90 deg (lowest point)
-        {227.2, 468.9, 1},   // 10  80 deg
-        {238.9, 465.8, 1},   // 11  70 deg
-        {250.0, 460.6, 1},   // 12  60 deg
-        {260.0, 453.6, 1},   // 13  50 deg
-        {268.6, 445.0, 1},   // 14  40 deg
-        {275.6, 435.0, 1},   // 15  30 deg
-        {280.8, 423.9, 1},   // 16  20 deg
-        {283.9, 412.2, 1},   // 17  10 deg
+
         {285.0, 400.0, 1},   // 18  bottom of stem
         {285.0, 100.0, 1},   // 19  top of stem (draws the stem upward)
-        {380.0, 100.0, 0},   // 20  pen-up jump to the right end of the bar
-        {190.0, 100.0, 1}    // 21  END: draws the bar right to left
+            { 380.0, 100.0, 0 }, // 20  pen-up jump to the right end of the bar
+                {190.0, 100.0, 1}, // 21  END: draws the bar right to left
 
     };
 
