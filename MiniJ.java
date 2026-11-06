@@ -9,8 +9,8 @@ public class MiniJ extends JPanel {
     // ===================== PATH A: FROM THE TOP (original, index 0 to 21) =====================
     static final double[][] FROM_TOP = {
         {190.0, 100.0, 1},   //  0  START: left end of top bar
-        {380.0, 100.0, 1},   //  1  right end of top bar
-        {285.0, 100.0, 0},   //  2  pen-up jump to middle of bar
+        {380.0, 100.0, 1},   //  1  right end of top bar // only Horizontal line, no vertical line
+        {285.0, 100.0, 0},   //  2  pen-up jump to middle of bar// vertical line, no horizontal line
         {285.0, 400.0, 1},   //  3  bottom of stem
         {283.9, 412.2, 1},   //  4  hook 10 deg
         {280.8, 423.9, 1},   //  5  20 deg
@@ -56,6 +56,7 @@ public class MiniJ extends JPanel {
         {285.0, 100.0, 1},   // 19  top of stem (draws the stem upward)
         {380.0, 100.0, 0},   // 20  pen-up jump to the right end of the bar
         {190.0, 100.0, 1}    // 21  END: draws the bar right to left
+
     };
 
     // The path the program actually uses
@@ -99,10 +100,10 @@ public class MiniJ extends JPanel {
     }
 
     void update() {
-        angleDeg += DEG_PER_FRAME * spinDir;
+        angleDeg += DEG_PER_FRAME * spinDir; //always spin, even during tracing
         if (!tracing) {
             phase1Turned += DEG_PER_FRAME;
-            if (phase1Turned >= 360) tracing = true;
+            if (phase1Turned >= 360) tracing = true; // after one full turn, start tracing
         } else {
             dist += SPEED * moveDir;
             dist = Math.max(0, Math.min(total, dist));
@@ -130,7 +131,7 @@ public class MiniJ extends JPanel {
             double d = dist;
             x = P[0][0]; y = P[0][1];
             g.setStroke(new BasicStroke(5, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-            g.setColor(Color.RED);
+            g.setColor(Color.BLUE); //Colour of Big J when tracing
             for (int i = 1; i < P.length && d > 0; i++) {
                 double len = Math.hypot(P[i][0] - P[i-1][0], P[i][1] - P[i-1][1]);
                 double used = Math.min(d, len);
@@ -156,7 +157,7 @@ public class MiniJ extends JPanel {
         Graphics2D s = (Graphics2D) g.create();
         s.translate(x, y);
         s.rotate(Math.toRadians(angleDeg));
-        s.setColor(Color.BLUE);
+        s.setColor(Color.RED); // Change the color of the small J to red
         drawSmall(s, scale);
         s.dispose();
 
